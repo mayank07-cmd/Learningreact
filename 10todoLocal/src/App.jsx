@@ -27,16 +27,18 @@ function App() {
         completed: !prevTodo.completed } : prevTodo))
   }
 
+  //Since localStorage stores strings, we convert it back to a JavaScript array using JSON.parse().
   useEffect(() => {
-    const todos = JSON.parse(localStorage.getItem("todos")) //json string to num
+    const todos = JSON.parse(localStorage.getItem("todos")) 
 
     if (todos && todos.length > 0) {
       setTodos(todos)
     }
   }, [])
 
+  //JSON.stringify(todos) turns the array into a string so it can be stored in localStorage.
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos)) //conver
+    localStorage.setItem("todos", JSON.stringify(todos)) 
   }, [todos])
  
   
